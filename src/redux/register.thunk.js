@@ -5,8 +5,9 @@ export const registerThunk = createAsyncThunk(
   'user/register',
   async (formData, { rejectWithValue }) => {
     try {
-      const data = await UserApi.register(formData);
-      return data;
+      const response = await UserApi.register(formData);
+      localStorage.setItem('token', response.token);
+      return response;
     } catch (error) {
       return rejectWithValue(error.message);
     }
