@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { loginThunk } from 'redux/register.thunk';
 
 const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -16,6 +18,7 @@ const LoginPage = () => {
     dispatch(loginThunk(formData));
     setEmail('');
     setPassword('');
+    navigate('/contacts');
   };
 
   return (

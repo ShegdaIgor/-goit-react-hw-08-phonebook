@@ -1,31 +1,31 @@
-// import { ContactsForm } from './ContactsForm/ContactsForm';
-// import { ContactsList } from './ContactsList/ContactsList';
-// import { Filter } from './FilterContact/FilterContact';
-// import css from './App.module.css';
 import { Layout } from './Layout/Layout';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import RegisterPage from 'pages/RegisterPage';
 import LoginPage from 'pages/LoginPage';
 import ContactsPage from 'pages/ContactsPage';
+import PrivateRoute from './FilterContact/PrivateRoute/PrivateRoute';
+import PublicRoute from './PublicRoute/PublicRoute';
+import { currentThunk } from 'redux/register.thunk';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 export const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(currentThunk());
+  }, [dispatch]);
+
   return (
-    <Layout>
-      <Routes>
-        {/* <div className={css.contacts}>
-          <h1>Phonebook</h1>
-          <ContactsForm />
-          <h2>Contacts</h2>
-          <Filter />
-          <ContactsList />
-        </div> */}
-        <Route index element={<Navigate to="/register" />}></Route>
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
-        <Route />
-        <Route />
-      </Routes>
-    </Layout>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="/" element={<PrivateRoute />}>
+          <Route path="/contacts" element={<ContactsPage />} />
+        </Route>
+        <Route path="/" element={<PublicRoute />}>
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Route>
+      </Route>
+    </Routes>
   );
 };

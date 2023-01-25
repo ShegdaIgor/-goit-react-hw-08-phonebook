@@ -16,6 +16,7 @@ const $contactPrivateAPI = axios.create({
 
 const authInterceptor = config => {
   config.headers['Authorization'] = localStorage.getItem('token');
+  return config;
 };
 
 $contactPrivateAPI.interceptors.request.use(authInterceptor);
@@ -33,8 +34,8 @@ export const UserApi = {
     const { data } = await $contactPrivateAPI.post('users/logout');
     return data;
   },
-  async Current(formData) {
-    const { data } = await $contactPrivateAPI.get('users/current', formData);
+  async Current() {
+    const { data } = await $contactPrivateAPI.get('users/current');
     return data;
   },
 };
