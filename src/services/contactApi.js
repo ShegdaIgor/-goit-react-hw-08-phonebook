@@ -30,11 +30,11 @@ export const UserApi = {
     return data;
   },
   async Logout() {
-    const { data } = await $contactPrivateAPI.post('/users/logout');
+    const { data } = await $contactPrivateAPI.post('users/logout');
     return data;
   },
   async Current(formData) {
-    const { data } = await $contactPrivateAPI.get('/users/current', formData);
+    const { data } = await $contactPrivateAPI.get('users/current', formData);
     return data;
   },
 };
