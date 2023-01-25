@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerThunk } from './register.thunk';
+import { loginThunk, registerThunk } from './register.thunk';
 
 const initialState = {
   token: null,
@@ -25,6 +25,20 @@ const userSlice = createSlice({
         }
       )
       .addCase(registerThunk.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      ///////////////////////LOGIN///////////////////////////////////////
+      .addCase(loginThunk.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(loginThunk.fulfilled, (state, { payload: { user, token } }) => {
+        state.isLoading = false;
+        state.userData = user;
+        state.token = token;
+      })
+      .addCase(loginThunk.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       }),

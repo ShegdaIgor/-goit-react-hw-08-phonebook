@@ -5,6 +5,8 @@
 import { Layout } from './Layout/Layout';
 import { Route, Routes } from 'react-router-dom';
 import RegisterPage from 'pages/RegisterPage';
+import LoginPage from 'pages/LoginPage';
+// import ContactsPage from 'pages/ContactsPage';
 
 export const App = () => {
   return (
@@ -17,10 +19,10 @@ export const App = () => {
           <Filter />
           <ContactsList />
         </div> */}
-        <Route />
+        <Route path="/" element={<Layout />}></Route>
         <Route path="/register" element={<RegisterPage />} />
-        <Route />
-        <Route />
+        <Route path="/login" element={<LoginPage />} />
+        {/* <Route path="/contacts" element={<ContactsPage />} /> */}
         <Route />
         <Route />
       </Routes>

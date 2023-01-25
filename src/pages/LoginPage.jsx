@@ -1,38 +1,27 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { registerThunk } from 'redux/register.thunk';
+import { loginThunk } from 'redux/register.thunk';
 
-function RegisterPage() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+const LoginPage = () => {
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
     const formData = {
-      name,
-      email,
-      password,
+      email: email,
+      password: password,
     };
-    dispatch(registerThunk(formData));
-    setName('');
-    setPassword('');
+    dispatch(loginThunk(formData));
     setEmail('');
+    setPassword('');
   };
 
   return (
     <div>
-      <h1>Registration</h1>
+      <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            value={name}
-            onChange={e => setName(e.target.value)}
-          />
-        </label>
         <label>
           Email:
           <input
@@ -45,15 +34,14 @@ function RegisterPage() {
           Password:
           <input
             type="password"
-            autoComplete="off"
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
         </label>
-        <button type="submit">Sign up</button>
+        <button type="submit">Log In</button>
       </form>
     </div>
   );
-}
+};
 
-export default RegisterPage;
+export default LoginPage;
