@@ -22,7 +22,19 @@ $contactPrivateAPI.interceptors.request.use(authInterceptor);
 
 export const UserApi = {
   async register(formData) {
-    const { data } = await $contactPublicAPI.post('/register', formData);
+    const { data } = await $contactPublicAPI.post('users/signup', formData);
+    return data;
+  },
+  async login(formData) {
+    const { data } = await $contactPublicAPI.post('users/login', formData);
+    return data;
+  },
+  async Logout() {
+    const { data } = await $contactPrivateAPI.post('/users/logout');
+    return data;
+  },
+  async Current(formData) {
+    const { data } = await $contactPrivateAPI.get('/users/current', formData);
     return data;
   },
 };

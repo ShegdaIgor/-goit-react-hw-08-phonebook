@@ -2,7 +2,7 @@ const { createAsyncThunk } = require('@reduxjs/toolkit');
 const { UserApi } = require('services/contactApi');
 
 export const registerThunk = createAsyncThunk(
-  'user/register',
+  'users/signup',
   async (formData, { rejectWithValue }) => {
     try {
       const response = await UserApi.register(formData);
@@ -15,7 +15,20 @@ export const registerThunk = createAsyncThunk(
 );
 
 export const loginThunk = createAsyncThunk(
-  'user/login',
+  'users/login',
+  async (formData, { rejectWithValue }) => {
+    try {
+      const response = await UserApi.login(formData);
+      localStorage.setItem('token', response.token);
+      return response;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logoutThunk = createAsyncThunk(
+  'users/logout',
   async (formData, { rejectWithValue }) => {
     try {
       const response = await UserApi.login(formData);

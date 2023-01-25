@@ -11,14 +11,6 @@ export const Layout = ({ children }) => {
             className={({ isActive }) =>
               cn(css.NavLink, { [css.active]: isActive })
             }
-            to="/"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              cn(css.NavLink, { [css.active]: isActive })
-            }
             to="/register"
           >
             Register

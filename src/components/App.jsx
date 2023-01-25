@@ -3,10 +3,10 @@
 // import { Filter } from './FilterContact/FilterContact';
 // import css from './App.module.css';
 import { Layout } from './Layout/Layout';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import RegisterPage from 'pages/RegisterPage';
 import LoginPage from 'pages/LoginPage';
-// import ContactsPage from 'pages/ContactsPage';
+import ContactsPage from 'pages/ContactsPage';
 
 export const App = () => {
   return (
@@ -19,10 +19,10 @@ export const App = () => {
           <Filter />
           <ContactsList />
         </div> */}
-        <Route path="/" element={<Layout />}></Route>
+        <Route index element={<Navigate to="/register" />}></Route>
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        {/* <Route path="/contacts" element={<ContactsPage />} /> */}
+        <Route path="/contacts" element={<ContactsPage />} />
         <Route />
         <Route />
       </Routes>
