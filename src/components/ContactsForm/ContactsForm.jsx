@@ -1,10 +1,10 @@
+import { PhoneIcon } from '@chakra-ui/icons';
 import { Flex, FormControl, FormLabel, Input } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts.thunk';
 import { getContacts } from 'redux/selectors';
 import css from './ContactsForm.module.css';
-
 export const ContactsForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -59,7 +59,10 @@ export const ContactsForm = () => {
           </div>
 
           <div>
-            <FormLabel mt={5}>Number</FormLabel>
+            <FormLabel mt={5}>
+              <PhoneIcon w={3} h={3} mr={1} mb={1} />
+              Number
+            </FormLabel>
             <Input
               type="tel"
               name="number"

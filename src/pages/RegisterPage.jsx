@@ -1,3 +1,4 @@
+import { EmailIcon } from '@chakra-ui/icons';
 import { Button, Flex, FormControl, FormLabel, Input } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -38,7 +39,10 @@ function RegisterPage() {
               onChange={e => setName(e.target.value)}
             />
 
-            <FormLabel mt={5}>Email</FormLabel>
+            <FormLabel mt={5}>
+              <EmailIcon mb={1} mr={1} />
+              Email
+            </FormLabel>
             <Input
               type="email"
               placeholder="Email Address"
