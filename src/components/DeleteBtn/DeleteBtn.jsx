@@ -1,15 +1,18 @@
 import PropTypes from 'prop-types';
 import css from './DeleteBtn.module.css';
+import { Button } from '@chakra-ui/react';
 
 export const DeleteBtn = ({ id, actionText, onDeleteContact }) => {
   return (
-    <button
+    <Button
       type="button"
+      colorScheme="red"
+      size="xs"
       className={css.buttonOnDelete}
       onClick={() => onDeleteContact(id)}
     >
       {actionText}
-    </button>
+    </Button>
   );
 };
 

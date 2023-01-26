@@ -22,22 +22,24 @@ export const ContactsList = () => {
   );
 
   return (
-    <ul className={css.contactList}>
-      {filteredContacts.map(contact => (
-        <li key={contact.id} className={css.contactItem}>
-          <p className={css.contactInfoWrapper}>
-            <span className={css.contactName}>{contact.name}:</span>&nbsp;
-            <span className={css.contactNumber}>{contact.number}</span>
-          </p>
+    <div className={css.ContactsList_Box}>
+      <ul className={css.contactList}>
+        {filteredContacts.map(contact => (
+          <li key={contact.id} className={css.contactItem}>
+            <p className={css.contactInfoWrapper}>
+              <span className={css.contactName}>{contact.name}:</span>&nbsp;
+              <span className={css.contactNumber}>{contact.number}</span>
+            </p>
 
-          <DeleteBtn
-            type="button"
-            onDeleteContact={() => handleDeleteContact(contact.id)}
-            id={contact.id}
-            actionText=" Delete"
-          ></DeleteBtn>
-        </li>
-      ))}
-    </ul>
+            <DeleteBtn
+              type="button"
+              onDeleteContact={() => handleDeleteContact(contact.id)}
+              id={contact.id}
+              actionText=" Delete"
+            ></DeleteBtn>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };

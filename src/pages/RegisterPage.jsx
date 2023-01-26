@@ -1,6 +1,8 @@
+import { Button, Flex, FormControl, FormLabel, Input } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerThunk } from 'redux/register.thunk';
+import css from './RegisterPage.module.css';
 
 function RegisterPage() {
   const [name, setName] = useState('');
@@ -22,36 +24,46 @@ function RegisterPage() {
   };
 
   return (
-    <div>
-      <h1>Registration</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            value={name}
-            onChange={e => setName(e.target.value)}
-          />
-        </label>
-        <label>
-          Email:
-          <input
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            autoComplete="off"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-        </label>
-        <button type="submit">Sign up</button>
-      </form>
+    <div className={css.contacts}>
+      <Flex>
+        <form onSubmit={handleSubmit}>
+          <FormControl ml={4}>
+            <FormLabel mt={5}>Name</FormLabel>
+            <Input
+              type="text"
+              placeholder="First name"
+              htmlSize={30}
+              width="auto"
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
+
+            <FormLabel mt={5}>Email</FormLabel>
+            <Input
+              type="email"
+              placeholder="Email Address"
+              htmlSize={30}
+              width="auto"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+
+            <FormLabel mt={5}>Password</FormLabel>
+            <Input
+              type="text"
+              autoComplete="off"
+              htmlSize={30}
+              width="auto"
+              placeholder="Enter password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+          </FormControl>
+          <Button type="submit" colorScheme="teal" size="sm" mt={5} ml={235}>
+            Sign Up
+          </Button>
+        </form>
+      </Flex>
     </div>
   );
 }

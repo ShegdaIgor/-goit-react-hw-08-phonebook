@@ -5,6 +5,10 @@
   row-gap: 8px;
 }
 
+.ContactsList_Box {
+  margin-left: 120px;
+}
+
 .contactItem {
   display: flex;
   align-items: center;

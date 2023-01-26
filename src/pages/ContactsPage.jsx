@@ -8,9 +8,9 @@ import css from './ContactsPage.module.css';
 const ContactsPage = () => {
   return (
     <div className={css.contacts}>
-      <h1>Phonebook</h1>
+      <h1 className={css.title}>Phonebook</h1>
       <ContactsForm />
-      <h2>Contacts</h2>
+      <h2 className={css.title}>Contacts</h2>
       <Filter />
       <ContactsList />
     </div>
